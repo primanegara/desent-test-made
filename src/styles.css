@@ -1,0 +1,113 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * NomadStack Bali design system — "Jungle digitalist".
+ * Deep jungle green, vivid leaf accent, warm sand canvas.
+ * All colors are oklch tokens; never hardcode colors in components.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-jungle: var(--jungle);
+  --color-leaf: var(--leaf);
+  --color-sand: var(--sand);
+  --color-sunset: var(--sunset);
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --shadow-stage: 0 40px 90px -30px color-mix(in oklab, var(--jungle) 30%, transparent);
+  --shadow-float: 0 18px 40px -18px color-mix(in oklab, var(--jungle) 35%, transparent);
+}
+
+:root {
+  --radius: 1rem;
+  --jungle: oklch(0.34 0.075 163);
+  --leaf: oklch(0.72 0.16 162);
+  --sand: oklch(0.968 0.008 85);
+  --sunset: oklch(0.79 0.16 72);
+
+  --background: var(--sand);
+  --foreground: var(--jungle);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--jungle);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--jungle);
+  --primary: var(--jungle);
+  --primary-foreground: oklch(0.99 0.005 120);
+  --secondary: oklch(0.94 0.012 100);
+  --secondary-foreground: var(--jungle);
+  --muted: oklch(0.95 0.01 100);
+  --muted-foreground: oklch(0.55 0.03 163);
+  --accent: var(--leaf);
+  --accent-foreground: oklch(0.2 0.05 163);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.99 0.005 120);
+  --border: oklch(0.34 0.075 163 / 10%);
+  --input: oklch(0.34 0.075 163 / 14%);
+  --ring: var(--leaf);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+}
+
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.9);
+  }
+  60% {
+    transform: translateY(-3px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@utility animate-pop-in {
+  animation: pop-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@utility stage-floor {
+  background-image: radial-gradient(
+    ellipse 60% 45% at 50% 82%,
+    color-mix(in oklab, var(--leaf) 16%, transparent),
+    transparent 70%
+  );
+}
